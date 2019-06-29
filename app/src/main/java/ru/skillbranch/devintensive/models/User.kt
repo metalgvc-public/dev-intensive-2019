@@ -25,11 +25,11 @@ data class User (
 
     }
 
-    object Factory {
+    companion object Factory {
 
         private var newUserId = -1
 
-        fun makeUser(fullName: String): User {
+        fun makeUser(fullName: String?): User {
             newUserId++
 
             val (firstName, lastName) = Utils.parseFullName(fullName)
@@ -39,7 +39,7 @@ data class User (
 
     }
 
-    companion object Builder {
+    object Builder {
         var id : String = "0"
         var firstName : String? = null
         var lastName : String? = null
