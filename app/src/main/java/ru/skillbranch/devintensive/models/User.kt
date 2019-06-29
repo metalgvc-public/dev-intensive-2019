@@ -32,6 +32,10 @@ data class User (
         fun makeUser(fullName: String?): User {
             newUserId++
 
+            if (fullName.isNullOrBlank()) {
+                throw IllegalArgumentException("Fullname should not be blank")
+            }
+
             val (firstName, lastName) = Utils.parseFullName(fullName)
 
             return User(id = "$newUserId", firstName = firstName, lastName = lastName)
