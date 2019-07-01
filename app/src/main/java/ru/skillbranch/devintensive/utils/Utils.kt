@@ -38,16 +38,11 @@ object Utils {
         val delimiter: String = " "
 
         for ((from, to) in this.translitMap) {
-            result = result.replace(from, to, true)
+            result = result.replace(from, to)
+            result = result.replace(from.capitalize(), to.capitalize())
         }
 
-        val words = result.split(delimiter).toMutableList()
-
-        result = ""
-        for(word in words){
-            result += word.capitalize() +divider
-        }
-        result = result.removeSuffix(divider)
+        result = result.replace(delimiter, divider)
 
         return result
     }
