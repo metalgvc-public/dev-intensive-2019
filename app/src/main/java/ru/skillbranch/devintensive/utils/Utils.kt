@@ -45,10 +45,9 @@ object Utils {
 
         result = ""
         for(word in words){
-            result += word.capitalize() +" "
+            result += word.capitalize() +divider
         }
-
-        result = result.trim().replace(delimiter, divider)
+        result = result.removeSuffix(divider)
 
         return result
     }
