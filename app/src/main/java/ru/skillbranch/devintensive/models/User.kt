@@ -32,9 +32,9 @@ data class User (
         fun makeUser(fullName: String?): User {
             newUserId++
 
-            if (fullName.isNullOrBlank()) {
-                throw IllegalArgumentException("Fullname should not be blank")
-            }
+//            if (fullName.isNullOrBlank()) {
+//                throw IllegalArgumentException("Fullname should not be blank")
+//            }
 
             val (firstName, lastName) = Utils.parseFullName(fullName)
 
@@ -43,7 +43,7 @@ data class User (
 
     }
 
-    object Builder {
+    class Builder {
         var id : String = "0"
         var firstName : String? = null
         var lastName : String? = null

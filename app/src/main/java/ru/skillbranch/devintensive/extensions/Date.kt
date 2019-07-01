@@ -9,7 +9,7 @@ const val MINUTE = 60 * SECOND
 const val HOUR = 60 * MINUTE
 const val DAY = 24 * HOUR
 
-enum class TimeUnit {
+enum class TimeUnits {
     SECOND,
     MINUTE,
     HOUR,
@@ -21,13 +21,13 @@ fun Date.format(pattern:String = "HH:mm:ss dd.MM.yy", locale:String = "ru"): Str
     return sDateFromat.format(this)
 }
 
-fun Date.add(value: Int, units: TimeUnit = TimeUnit.SECOND): Date {
+fun Date.add(value: Int, units: TimeUnits = TimeUnits.SECOND): Date {
 
     this.time += when (units) {
-        TimeUnit.SECOND -> value * SECOND
-        TimeUnit.MINUTE -> value * MINUTE
-        TimeUnit.HOUR -> value * HOUR
-        TimeUnit.DAY -> value * DAY
+        TimeUnits.SECOND -> value * SECOND
+        TimeUnits.MINUTE -> value * MINUTE
+        TimeUnits.HOUR -> value * HOUR
+        TimeUnits.DAY -> value * DAY
     }
 
     return this
