@@ -9,11 +9,95 @@ const val MINUTE = 60 * SECOND
 const val HOUR = 60 * MINUTE
 const val DAY = 24 * HOUR
 
-enum class TimeUnits {
-    SECOND,
-    MINUTE,
-    HOUR,
-    DAY
+interface TimeUnitsPlural {
+    fun plural(value: Int): String
+}
+
+enum class TimeUnits: TimeUnitsPlural {
+    SECOND {
+        override fun plural(value: Int): String {
+            var _val = value
+
+            if (value > 100) {
+                _val = value.toString().substring(value.toString().length - 2, value.toString().length).toInt()
+            }
+
+            if (_val in 10..20) {
+                return "$value секунд"
+            } else {
+                _val = value.toString().substring(value.toString().length - 1, value.toString().length).toInt()
+                when (_val) {
+                    1 -> return "$value секунду"
+                    in 2..4 -> return "$value секунды"
+                }
+            }
+
+            return "$value секунд"
+        }
+    },
+    MINUTE {
+        override fun plural(value: Int): String {
+            var _val = value
+
+            if (value > 100) {
+                _val = value.toString().substring(value.toString().length - 2, value.toString().length).toInt()
+            }
+
+            if (_val in 10..20) {
+                return "$value минут"
+            } else {
+                _val = value.toString().substring(value.toString().length - 1, value.toString().length).toInt()
+                when (_val) {
+                    1 -> return "$value минуту"
+                    in 2..4 -> return "$value минуты"
+                }
+            }
+
+            return "$value минут"
+        }
+    },
+    HOUR {
+        override fun plural(value: Int): String {
+            var _val = value
+
+            if (value > 100) {
+                _val = value.toString().substring(value.toString().length - 2, value.toString().length).toInt()
+            }
+
+            if (_val in 10..20) {
+                return "$value часов"
+            } else {
+                _val = value.toString().substring(value.toString().length - 1, value.toString().length).toInt()
+                when (_val) {
+                    1 -> return "$value час"
+                    in 2..4 -> return "$value часа"
+                }
+            }
+
+            return "$value часов"
+        }
+    },
+    DAY {
+        override fun plural(value: Int): String {
+            var _val = value
+
+            if (value > 100) {
+                _val = value.toString().substring(value.toString().length - 2, value.toString().length).toInt()
+            }
+
+            if (_val in 10..20) {
+                return "$value дней"
+            } else {
+                _val = value.toString().substring(value.toString().length - 1, value.toString().length).toInt()
+                when (_val) {
+                    1 -> return "$value день"
+                    in 2..4 -> return "$value дня"
+                }
+            }
+
+            return "$value дней"
+        }
+    }
 }
 
 fun Date.format(pattern:String = "HH:mm:ss dd.MM.yy", locale:String = "ru"): String {
