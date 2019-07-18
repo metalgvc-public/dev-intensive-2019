@@ -51,7 +51,7 @@
             android:layout_marginLeft="@dimen/spacing_normal_16"
             android:layout_marginRight="@dimen/spacing_normal_16"
             android:imeOptions="actionDone"
-            android:inputType="textCapWords"
+            android:inputType="text"
         />
 
         <ImageView

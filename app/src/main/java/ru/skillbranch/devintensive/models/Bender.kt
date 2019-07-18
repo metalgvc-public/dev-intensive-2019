@@ -70,7 +70,6 @@ class Bender(
             override fun nextQuestion(): Question = PROFESSION
 
             override fun validate(answer: String): String? {
-                //Log.d("M_Bender", answer)
 
                 if (answer.first().isLowerCase()) {
                     return "Имя должно начинаться с заглавной буквы"
@@ -101,7 +100,7 @@ class Bender(
             }
         },
 
-        BDAY("Когда меня создали", listOf("2993")){
+        BDAY("Когда меня создали?", listOf("2993")){
             override fun nextQuestion(): Question = SERIAL
 
             override fun validate(answer: String): String? {
